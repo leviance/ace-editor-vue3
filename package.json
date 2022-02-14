@@ -1,0 +1,29 @@
+{
+  "name": "ace-editor-vue3",
+  "version": "1.0.0",
+  "description": "Like vue2-ace-editor but more functional and supports Vue 3",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/drdung1999/ace-editor-vue3.git"
+  },
+  "keywords": [
+    "ace",
+    "ace-editor",
+    "vue-ace-editor",
+    "vue code editor",
+    "javascript code editor",
+    "json code editor",
+    "code editor",
+    "editor"
+  ],
+  "author": "Levi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drdung1999/ace-editor-vue3/issues"
+  },
+  "homepage": "https://github.com/drdung1999/ace-editor-vue3#readme"
+}
