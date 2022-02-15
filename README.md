@@ -1,90 +1,85 @@
-vue2-ace-editor
-====================
+# ace-editor-vue3
 
+A package of [ace](https://ace.c9.io) support for vue3.
 
-[![npm](https://img.shields.io/npm/v/vue2-ace-editor.svg)](https://www.npmjs.com/package/vue2-ace-editor)
+## Installation
 
+Installation is done using the npm install command:
 
-A packaging of [ace](https://ace.c9.io/)
-
-Demo here: https://github.com/chairuosen/vue-ace-editor-demo/tree/vue2
-
-## IMPORTANT
-emmet support for html is removed after 0.0.6. because its code cannot works with strict mode.
-
-if you want to use it. require emmet by your own.
-```
-npm install emmet@git+https://github.com/cloud9ide/emmet-core.git#41973fcc70392864c7a469cf5dcd875b88b93d4a
+```bash
+npm i ace-editor-vue3
 ```
 
-```js
-require(['emmet/emmet'],function (data) { // this is huge. so require it async is better
-    window.emmet = data.emmet;
-});
+## Example
+
+```vue
+<template>
+  <AceEditor
+    v-model:codeContent="value" 
+    v-model:editor="editor"
+    :options="options"
+    :theme="theme"
+    :lang="lang"
+    width="100%" 
+    height="300px" 
+  />
+  <button @click="setValue">set value</button>
+  <button @click="getValue">get value</button>
+  <button @click="setSize">set size</button>
+</template>
+
+<script>
+import AceEditor from "ace-editor-vue3";
+import "brace/mode/javascript";
+import "brace/theme/monokai";
+
+export default {
+  components: {
+    AceEditor
+  },
+
+  data() {
+    return {
+      editor: null,
+      value: `console.log("hello ok.")`,
+      options: {"showPrintMargin": false},
+      lang: "javascript",
+      theme: "monokai", 
+    }
+  },
+
+  methods: {
+    setValue() {
+      this.value = `const a = 100;`;
+    },
+
+    getValue() {
+      console.log(this.value);
+    },
+
+    setSize() {
+      this.editor.setFontSize(32);
+    }
+  },
+
+  watch: {
+    value() {
+      console.log("use typing code:");
+      console.log(this.value);
+    }
+  },
+}
+</script>
+
+<style>
+
+</style>
 ```
 
-## How to use
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-1. Install
+Please make sure to update tests as appropriate.
 
-    ```
-    npm install --save-dev vue2-ace-editor
-    ```
-    
-2. Require it in `components` of Vue options
-
-    ```js
-    {
-        data,
-        methods,
-        ...
-        components: {
-            editor: require('vue2-ace-editor'),
-        },
-    }
-    ```
- 
-3. Require the editor's mode/theme module in custom methods
-    
-    ```js
-    {
-        data,
-        methods: {
-            editorInit: function () {
-                require('brace/ext/language_tools') //language extension prerequsite...
-                require('brace/mode/html')                
-                require('brace/mode/javascript')    //language
-                require('brace/mode/less')
-                require('brace/theme/chrome')
-                require('brace/snippets/javascript') //snippet
-            }
-        },
-    }
-    ```
-    
-4. Use the component in template
-
-    ```html
-    <editor v-model="content" @init="editorInit" lang="html" theme="chrome" width="500" height="100"></editor>
-    ```
-    
-    prop `v-model`  is required
-    
-    prop `lang` and `theme` is same as [ace-editor's doc](https://github.com/ajaxorg/ace)
-    
-    prop `height` and `width` could be one of these:  `200`, `200px`, `50%`
-    
-5. Access the ACE's instance
-
-    `<editor ref='myEditor'>`
-
-    `let editor = this.$refs.myEditor.editor`
-    
-    or
-    
-    ```
-    editorInit: function (editor) {
-    
-    }
-    ```
-    
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
