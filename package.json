@@ -1,6 +1,6 @@
 {
   "name": "ace-editor-vue3",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Like vue2-ace-editor but more functional and supports Vue 3",
   "main": "index.js",
   "scripts": {
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/drdung1999/ace-editor-vue3/issues"
   },
-  "homepage": "https://github.com/drdung1999/ace-editor-vue3#readme"
+  "homepage": "https://github.com/drdung1999/ace-editor-vue3#readme",
+  "dependencies": {
+    "brace": "^0.11.1"
+  }
 }
