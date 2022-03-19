@@ -1,5 +1,6 @@
 import {h} from 'vue';
 import ace from "brace";
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
     props: {
@@ -35,7 +36,7 @@ export default {
 
     data() {
         return {
-            componentId: `vue3-code-editor-${Date.now()}`,
+            componentId: `vue3-code-editor-${Date.now()}-${uuidv4()}`,
             _editor: null
         }
     },
@@ -54,6 +55,7 @@ export default {
             if(this.codeContent != this._editor.getValue())
             {
                 this._editor.setValue(this.codeContent);
+                setTimeout(() => this._editor.navigateFileEnd(), 0);
             }
             
         }
